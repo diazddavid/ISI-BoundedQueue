@@ -47,4 +47,11 @@ public class BoundedQueueTest {
 		assertTrue("Fallo con isEmpty", b.isEmpty());
 	}
 	
+	// Test Objeto nulo
+	// Cubre FT de {C2 C4} en enQueue
+	@Test(expected=NullPointerException.class)
+	public void test5 () {
+		b.enQueue(null);
+	}
+		
 }
