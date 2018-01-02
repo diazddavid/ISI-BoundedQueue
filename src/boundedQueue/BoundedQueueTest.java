@@ -20,7 +20,7 @@ public class BoundedQueueTest {
 		b = new BoundedQueue(-5);
 	}
 	
-	// Test para lista llena
+	// Test para happy path
 	// Cubre T de C1, TT de {C2,C3}, T de C4 con deQueue, T de C4 con isEmpty y T de C3 con isFull
 	@Test
 	public void test2 () {
@@ -28,6 +28,16 @@ public class BoundedQueueTest {
 		assertFalse("Fallo con isEmpty", b.isEmpty());
 		assertFalse("Fallo con isFull", b.isFull());
 		assertEquals("Fallo con deQueue", b.deQueue(), (Object) 5);
+	}
+	
+	// Test de lista llena
+	// Cubre TF de {C2, C3} en enQueue y F de C3 en isFull
+	@Test(expected=IllegalStateException.class)
+	public void test3 (){
+		b.enQueue(1);
+		b.enQueue(2);
+		assertTrue("Fallo con isFull con lista llena", b.isFull());
+		b.enQueue(3);
 	}
 
 }
