@@ -1,7 +1,6 @@
 package boundedQueue;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -40,4 +39,12 @@ public class BoundedQueueTest {
 		b.enQueue(3);
 	}
 
+	// Test cola vacia
+	// Cubre F de {C4} en deQueue y F de C4 en isEmpty
+	@Test(expected=IllegalStateException.class)
+	public void test4 () {
+		b.deQueue();
+		assertTrue("Fallo con isEmpty", b.isEmpty());
+	}
+	
 }
